@@ -1,7 +1,5 @@
 name: Path Trigger Workflow
-
-on:
-  workflow_dispatch: # 👈 ブラウザから手動で実行できるようにするボタン
+on: [workflow_dispatch]
 
 jobs:
   path-job:

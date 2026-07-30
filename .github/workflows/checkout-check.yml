@@ -1,5 +1,5 @@
 name: Checkout Check Workflow   # チェックアウト確認用のワークフロー
-on: [workflow_dispatch]
+on: [push]
 
 jobs:
   # ① チェックアウトを【しない】ジョブ
@@ -10,7 +10,6 @@ jobs:
         run: |
           echo "=== Checkoutしていない状態のファイル一覧 ==="
           ls -la
-
 
   # ② チェックアウトを【する】ジョブ
   with-checkout:

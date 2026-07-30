@@ -1,10 +1,7 @@
 name: Path Trigger Workflow
-on: [workflow_dispatch]
-#  push:
-#    branches:
-#      - main       # mainブランチにPushされた時のみ対象
-#    paths:
-#    
+
+on:
+  workflow_dispatch: # 👈 ブラウザから手動で実行できるようにするボタン
 
 jobs:
   path-job:
@@ -16,4 +13,9 @@ jobs:
       - name: srcディレクトリ内のファイル確認
         run: |
           echo "=== src/sample.txt の中身を出力します ==="
-          cat src/sample.txt
+          # src/sample.txt が存在しない場合のエラーを防ぐため、存在チェックを入れて安全にしています
+          if [ -f src/sample.txt ]; then
+            cat src/sample.txt
+          else
+            echo "エラー: src/sample.txt が見つかりません。フォルダ名が src になっているか確認してください。"
+          fi
